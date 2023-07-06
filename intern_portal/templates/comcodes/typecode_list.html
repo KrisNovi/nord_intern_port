@@ -1,0 +1,36 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+      <div class="container py-5">
+        <div class="alert alert-dismissible alert-primary">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          <div class="text-center">
+          <strong>Типовые коды</strong>
+          </div>
+        </div>
+        <br><br>
+        {% if typecodes %}
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">Наименование</th>
+              <th class="text-center" scope="col">Вендор</th>
+              <th class="text-center" scope="col">Код вендора</th>
+              <th class="text-center" scope="col">Стоимость, валюта</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for typecode in typecodes %}
+            <tr>
+              <td class="text-center">{{ typecode.name }}</td>
+              <td class="text-center">{{ typecode.vendor }}</td>
+              <td class="text-center">{{ typecode.code }}</td>
+              <td class="text-center">{{ typecode.price }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>Нет типовых кодов</p>
+        {% endif %}
+{% endblock %}

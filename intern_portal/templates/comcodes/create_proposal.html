@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container py-5">
+        <h1>{% block name %}Новое коммерческое предложение{% endblock%}</h1>
+        <form method="POST">
+          {% csrf_token %}
+          {{ form.as_p}}
+          
+            <table class="table form-table table-bordered table-sm">
+                    <thead class="text-center">
+                    <tr>
+                        <th>Типовой код</th>
+                        <th>Количество</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for form_data in formset %}
+                        <tr class="item">
+                            <td>
+                                {{ form_data.typecodes }}
+                            </td>
+                            <td>
+                                {{ form_data.qty }}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm remove-form-row"
+                                        id="{{ formset.prefix }}">
+                                
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="9"
+                            style="border-left: none!important; border-right: none !important; border-bottom: none!important;">
+                            <button type="button" class="btn btn-sm btn-success add-form-row"
+                                    id="{{ formset.prefix }}">
+                                Add
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+            {{ formset.management_form }}
+      
+          <button type="submit">Submit</button>
+        </form>
+    </div>
+
+{% block extra_script %}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('form .item select').select2();
+        });
+    </script>
+    <script type="text/javascript" src="{% static 'js/formset.js' %}"></script>
+
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,84 @@
+code,vendor,price,name
+176F2164,Danfoss,183881,12 Pulse Inverter module P1M0kW 500V
+176F2876,Danfoss,196581,12 Pulse Inverter module P1M0kW 690V
+176F2842,Danfoss,167251,12 Pulse Inverter module P315kW 480V
+176F2167,Danfoss,166272,12 Pulse Inverter module P500kW 500V
+176F2166,Danfoss,166272,12 Pulse Inverter module P560kW 500V
+176F2849,Danfoss,183881,12 Pulse Inverter module P630kW 480V
+176F2168,Danfoss,183881,12 Pulse Inverter module P630kW 500V
+176F2169,Danfoss,216786,12 Pulse Inverter module P710kW 500V
+176F2165,Danfoss,166272,12 Pulse Inverter module P800kW 500V
+176F2875,Danfoss,219611,12 Pulse Inverter module P800kW 690V
+176F2222,Danfoss,243775,12 Pulse Inverter module P900kW 690V
+130B4356,Danfoss,86,2 pole cable jumper
+134B5997,Danfoss,99,24 pole 3 connector jumper for C option
+134B7178,Danfoss,384,24 pole 3 connector jumper for C option
+134B7177,Danfoss,440,24 pole 3 connector jumper for C option
+130B0421,Danfoss,54,24 pole flatcable jumper with 2 plugs
+134B5998,Danfoss,71,24 pole jumper/2 connector jumper
+195N2293,Danfoss,79,3 pole line plug 20A 1/3 phase
+195N2344,Danfoss,74,3 pole line plug 32A for 6 mm2 wire
+176F6516,Danfoss,14402,300A Current Sens. Conv. Kit - D1h / D3h
+176F3752,Danfoss,10982,300A Current Sens. Conv. Kit - D2h / D4h
+176F3799,Danfoss,12075,300A CURRENT SENSOR RETROFIT KIT P407
+130B6462,Danfoss,752,3pol mains plug/twisted 10pc
+134B7194,Danfoss,57,3-pole Terminal Block
+176F6346,Danfoss,510,3R Top Sealing Plate for D1 Frame
+613X6396,Danfoss,82,4 POL HUN PROFIBUS
+130B5305,Danfoss,48,4 pole gate wire
+134B1622,Danfoss,160,44 pole jumper/control connector l=92mm
+134B6458,Danfoss,1647,44 pole jumper/control connector l=92mm
+130B5303,Danfoss,44,4pole gate wire for dual IGBT
+176F9088,Danfoss,2441,5 pk of Rittal door filters for F frame
+176F3737,Danfoss,11522,500A Current Sensor Conversion Kit
+176F3759,Danfoss,13792,500A CURRENT SENSOR RETROFIT KIT AAF/LHD
+176F3746,Danfoss,7662,500A Current Sensor Retrofit Kit E-frame
+176F3747,Danfoss,10458,500A Current Sensor Retrofit Kit F-frame
+176F3766,Danfoss,9563,500A CURRENT SENSOR RETROFIT KIT P407
+176F3890,Danfoss,18872,568A SCR Retrofit Kit - N200T5/N250T5 HO
+130B1071,Danfoss,752,6 Pole Connector, FC series,10 pcs
+141F3478,Danfoss,4454,60S01097 V100X MC05 Control Unit assembly +F0072
+141F3485,Danfoss,845,60S01106 HMI plug (10pcs) for V020X and V100X
+141F3486,Danfoss,5089,60S01107 V100X control 10 x accessory bag
+141F3487,Danfoss,3819,60S01108 V100X MM04 accessory bag (10pcs)
+141F3488,Danfoss,3866,60S01109 V100X MM05 accessory bag (10pcs)
+141F3489,Danfoss,3918,60S01110 V100X MM06 accessory bag (10pcs)
+141F3490,Danfoss,1219,60S01111 V100X MM04 3 x cable gland
+141F3491,Danfoss,1257,60S01112 V100X MM05 3 x cable gland
+141F3492,Danfoss,1465,60S01113 V100X MM06 3 x cable gland spare part
+141F3493,Danfoss,5454,60S01114 V020CP, X Accessory bag with all mater
+141F3494,Danfoss,1916,60S01115 10x Packaging carton box 214x151x100 spa
+141F3495,Danfoss,2775,60S01116 10x Packaging carton box with EPS 380x22
+141F3496,Danfoss,3045,60S01117 V020X MU03 10 x packaging
+141F3497,Danfoss,4036,60S01118 V100X MM04 packaging EPP
+141F3498,Danfoss,3918,60S01119 V100X MM05 packaging EPP
+141F3499,Danfoss,4833,60S01120 V100X MM06 10 x packaging
+141F3500,Danfoss,2068,60S01121 10x Packaging carton box with option inl
+141F3506,Danfoss,1376,60S01128 V020X MU02 main switch w
+141F3507,Danfoss,1722,60S01129 V020X MU03 QDSS option with cover spare
+141F3508,Danfoss,967,60S01133 Standard enclosure cover with Vacon labe
+141F3509,Danfoss,967,60S01134 Operator option enclosure cover with Vac
+141F3510,Danfoss,1190,60S01135 Standard enclosure cover with Vacon labe
+141F3511,Danfoss,1204,60S01136 Operator option enclosure cover with Vac
+141F3512,Danfoss,598,60S01137 V100X MM04 power terminal block
+141F3513,Danfoss,1608,60S01138 Power terminal block V100X MM05
+141F3514,Danfoss,1741,60S01139 V100X MM06 power terminal block
+141F3526,Danfoss,1304,60S01152 HMI cable 0.5m (10pcs)
+141F3529,Danfoss,308,60S01158 Internal fan ass. V100X MM04 and MM05
+141F3530,Danfoss,801,60S01159 Internal Fan ass. V100X MM06
+141F3531,Danfoss,308,60S01160 External Fan assembly V100X
+141F3532,Danfoss,1698,60S01161 External Fan ass. V100X MM06
+141F3533,Danfoss,1304,60S01162 5x Internal fan assembly, MS02, MU02 spa
+141F3535,Danfoss,308,60S01164 External Fan assembly, V020X MU02
+141F3537,Danfoss,712,60S01166 10x Option slot cover, V020CP, X spare p
+141F3540,Danfoss,351,60S01178 2 x gasket for cable entry plate, V100X
+141F3541,Danfoss,351,60S01179 2 x gasket for cable entry plate, V100X
+141F3542,Danfoss,351,60S01180 2 x gasket for cable entry plate, V100X
+141F3568,Danfoss,2040,60S01208 QDSH operator panel with
+141F3569,Danfoss,2505,60S01209 KIT+QDSH MU3 400V
+141F3571,Danfoss,845,60S01211 2 x US cable entry plate assembly, V100X
+141F3572,Danfoss,883,60S01212 2 x US cable entry plate assembly
+141F3575,Danfoss,1717,60S01215 HMI interface board (10pcs)
+141F3580,Danfoss,1465,60S01223 10x HMI cable 1m V020CP spare part
+141F3585,Danfoss,2954,60S01234 Main switch with cover, V020X 1PH MU02 Q
+141F6345,Danfoss,460,60S01268 Protective vent with gasket

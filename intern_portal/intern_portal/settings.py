@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-98-mazcoes69u&@oa@*b4lct6%&h#o7(pwc%y=!--0_t0c0ty6
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DJANGO_SETTINGS_MODULE = 'intern_portal.intern_portal.settings'
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -129,6 +130,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static', 'images'),
     os.path.join(BASE_DIR, 'comcodes', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -142,3 +144,4 @@ MIGRATION_MODULES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

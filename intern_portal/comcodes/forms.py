@@ -15,26 +15,20 @@ class CodeForm(forms.ModelForm):
         }
 
 class TypeCodeInProposalForm(forms.ModelForm):
+    typecodes = forms.ModelChoiceField(
+        queryset=TypeCode.objects.all(),
+        label='Типовой код',
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
 
-    typecodes = forms.ModelChoiceField(queryset=TypeCode.objects.all(), label='Коды')
-    
     class Meta:
         model = TypeCodeInProposal
-        fields = ['typecodes', 'qty',]
+        fields = ['typecodes', 'qty']
         widgets = {
-            'typecodes': forms.TextInput(
-                attrs={
-                    'class': 'form-control'
-                    }
-                ),
-            'qty': forms.NumberInput(
-                attrs={
-                    'class': 'form-control'
-                    }
-                ),
+            'qty': forms.NumberInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'typecodes': 'Типовой код',
+            'qty': 'Количество',
         }
 
 class ProposalForm(forms.ModelForm):
@@ -54,11 +48,13 @@ class ProposalForm(forms.ModelForm):
             'payment': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-TypeCodeInProposalFormSet = inlineformset_factory(
-    Proposal,
-    TypeCodeInProposal,
-    form=TypeCodeInProposalForm,
-    extra=1,
-    can_delete=True,
-    can_delete_extra=True
-)
+# TypeCodeInProposalFormSet = inlineformset_factory(
+#     Proposal,
+#     TypeCodeInProposal,
+#     form=TypeCodeInProposalForm,
+#     extra=1,
+#     can_delete=True,
+#     can_delete_extra=True,
+# )
+
+TypeCodeInProposalFormSet = formset_factory(TypeCodeInProposalForm, extra=1)

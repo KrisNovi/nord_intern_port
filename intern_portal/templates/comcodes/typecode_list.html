@@ -2,14 +2,11 @@
 {% load static %}
 {% block content %}
       <div class="container py-5">
-        <div class="alert alert-dismissible alert-primary">
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-          <div class="text-center">
-          <strong>Типовые коды</strong>
-          </div>
+        <div class="card mb-3">
+          <h3 class="card-header" style="text-align:center;">Типовые коды {{ proposal.prop_id }}</h3>
         </div>
         <br><br>
-        {% if typecodes %}
+        {% if page_obj %}
         <table class="table table-hover">
           <thead>
             <tr>
@@ -20,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for typecode in typecodes %}
+            {% for typecode in page_obj %}
             <tr>
               <td class="text-center">{{ typecode.name }}</td>
               <td class="text-center">{{ typecode.vendor }}</td>
@@ -33,4 +30,5 @@
         {% else %}
         <p>Нет типовых кодов</p>
         {% endif %}
+        {% include 'includes/paginator.html' %}
 {% endblock %}

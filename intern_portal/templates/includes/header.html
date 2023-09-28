@@ -9,16 +9,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
+            {% with request.resolver_match.view_name as view_name %}
             <li class="nav-item">
-              <a class="nav-link active" href="{% url 'comcodes:index' %}">Главная
+              <a class="nav-link {% if view_name  == 'comcodes:index' %}active{% endif %}"
+                href="{% url 'comcodes:index' %}">Главная
+                {% comment %} <span class="visually-hidden">(current)</span> {% endcomment %}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if view_name  == 'comcodes:typecode_list' %}active{% endif %}"
+                href="{% url 'comcodes:typecode_list' %}">Типовые коды
                 <span class="visually-hidden">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'comcodes:typecode_list' %}">Типовые коды</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'comcodes:proposal_list' %}">Коммерческие предложения</a>
+              <a class="nav-link {% if view_name  == 'comcodes:proposal_list' %}active{% endif %}"
+              href="{% url 'comcodes:proposal_list' %}">Коммерческие предложения
+                <span class="visually-hidden">(current)</span>
+              </a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -31,6 +39,7 @@
               </div>
             </li>
           </ul>
+          {% endwith %}
           <form class="d-flex">
             <input class="form-control me-sm-2" type="search" placeholder="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>

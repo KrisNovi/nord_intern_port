@@ -32,7 +32,7 @@ class TypeCode(models.Model):
         return self.name
     
     def __str__(self):
-        return self.name
+        return f'{self.name} ({self.code})'
 
 
 class Proposal(models.Model):
@@ -85,7 +85,9 @@ def generate_prop_id(sender, instance, created, **kwargs):
         if not instance.publication_date:
             instance.publication_date = timezone.now()
         date_part = instance.publication_date.astimezone(timezone.get_current_timezone()).strftime('%d%m%y')
-        count = Proposal.objects.filter(publication_date__date=instance.publication_date.date()).count() + 1
+        count = Proposal.objects.filter(publication_date__date=instance.publication_date.date(), prop_id__contains=f'{date_part}-').count() + 1
+        while Proposal.objects.filter(prop_id=f'{date_part}-{count}').exists():
+            count += 1
         instance.prop_id = f'{date_part}-{count}'
         instance.save()
 
@@ -102,7 +104,8 @@ class TypeCodeInProposal(models.Model):
         Proposal,
         on_delete=models.CASCADE,
         verbose_name='Коммерческое предложение',
-        null=True
+        null=True,
+        related_name='typecode_in_proposals'
     )
     qty = models.IntegerField(
         verbose_name='Количество'

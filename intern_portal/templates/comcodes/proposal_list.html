@@ -2,30 +2,39 @@
 {% load static %}
 {% block content %}
       <div class="container py-5">
-        <h2>{% block name1 %}Коммерческие предложения{% endblock%}</h2>
+        <div class="card mb-3">
+          <h3 class="card-header" style="text-align:center;">Коммерческие предложения {{ proposal.prop_id }}</h3>
+          </div>
         <br><br>
-        {% if prop_list %}
+        {% if page_obj %}
         <table class="table table-hover">
           <thead>
             <tr>
               <th class="text-center" scope="col">Номер коммерческого предложения</th>
               <th class="text-center" scope="col">Организация</th>
-              <th class="text-center" scope="col">Сумма, валюта</th>
+              <th class="text-center" scope="col">Сумма, ¥</th>
               <th class="text-center" scope="col">Дата создания</th>
+              <th class="text-center" scope="col"></th>
+              {% comment %} <th class="text-center" scope="col">Подробно</th> {% endcomment %}
+
             </tr>
           </thead>
           <tbody>
-            {% for proposal in prop_list %}
+            {% for proposal in page_obj %}
             <tr>
               <td class="text-center">{{ proposal.prop_id }}</td>
               <td class="text-center">{{ proposal.company }}</td>
               <td class="text-center">{{ proposal.amount }}</td>
               <td class="text-center">{{ proposal.publication_date|date:"d.m.y H:i" }}</td>
+              <td class="text-center">
+                <a href="{% url 'comcodes:proposal_detail' proposal.pk %}"> Подробно </a><br>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
         {% else %}
-        <p>Нет типовых кодов</p>
+        <p>Нет коммерческих предложений</p>
         {% endif %}
+      {% include 'includes/paginator.html' %}
 {% endblock %}

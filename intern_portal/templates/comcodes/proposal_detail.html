@@ -1,41 +1,73 @@
 ﻿{% extends "base.html" %}
-  {% block title %}Пост {{ post.text|truncatechars:30 }}{% endblock %}
+  {% block title %}КП {{ proposal.prop_id }}{% endblock %}
   {% block name %}{% endblock%}
   {% block content %}
-      <div class="row">
-        <aside class="col-12 col-md-3">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              Дата публикации: {{ post.pub_date|date:"d E Y" }}
-            </li>
-            {% if post.group %}   
-            <li class="list-group-item">
-              Группа: {{ post.group.title }}<br>
-              <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
-            {% endif %}
-            </li>
-            <li class="list-group-item">
-              Автор: {{ post.author.get_full_name }}
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Всего постов автора: {{ author_post }}
-            </li>
-            <li class="list-group-item">
-              <a href="{% url 'posts:profile' post.author %}">все посты пользователя</a>
-            </li>
-          </ul>
-        </aside>
-        <article class="col-12 col-md-9">
-          {% thumbnail post.image "960x339" upscale=True as im %}
-          <img class="card-img my-2" src="{{ im.url }}">
-          {% endthumbnail %}
-          <p>{{ post.text }}</p>
-          {% if post.author == user %}
-          <a class="btn btn-primary" href="{% url 'posts:post_edit' post.pk %}">
-            редактировать запись
-          </a>     
-          {% endif %}
-          {% include 'posts/includes/comments.html' %}
-        </article>
+    <div class="card mb-3">
+      <h3 class="card-header">Коммерческое предложение {{ proposal.prop_id }}</h3>      
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="card-body">
+            <h5 class="card-title">{{  proposal.company   }}</h5>
+            <p class="lead">Организация</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="card-body">
+            <h5 class="card-title">{{  proposal.person  }}</h5>
+            <p class="lead">Контактное лицо</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="card-body">
+            <p style="font-size: 20px">{{  proposal.supply_per }}</p>
+            <p class="lead">Срок поставки</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="card-body">
+            <p style="font-size: 20px">{{  proposal.payment }}</p>
+            <p class="lead">Условия оплаты</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="card-body">
+            <p style="font-size: 20px">
+              {% for typecode_in_proposal in proposal.typecode_in_proposals.all %}
+              <strong>{{ typecode_in_proposal.typecodes.name }} ({{ typecode_in_proposal.typecodes.code }})</strong> в количестве {{ typecode_in_proposal.qty }} шт.<br>
+              {% endfor %}
+            </p>
+            {% comment %} {% for typecode_in_proposal in proposal.typecode_in_proposals.all %}
+              <strong>{{ typecode_in_proposal.typecodes.name }}</strong> в количестве {{ typecode_in_proposal.qty }} шт.<br>
+            {% endfor %} {% endcomment %}
+            <p class="lead">Типовые коды</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="card-body">
+            <p style="font-size: 20px">{{  proposal.amount }} ¥</p>
+            <p class="lead">Сумма коммерческого предложения (валюта)</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="card-body">
+            <p style="font-size: 20px">{{  proposal.amount }} руб.</p>
+            <p class="lead">Сумма коммерческого предложения</p>
+          </div>
+        </li>
+      </ul>
+      {% comment %} <div class="card-body"> {% endcomment %}
+        {% comment %} <a href="#" class="card-link">Редактировать</a> {% endcomment %}
+        {% comment %} <a href="{% url 'comcodes:generate_pdf' %}" class="card-link">Скачать бесплатно без регистрации и СМС</a> {% endcomment %}
+      {% comment %} </div> {% endcomment %}
+
+      
+      <div class="card-footer text-muted">
+        Создано: {{ proposal.publication_date|date:"d.m.y H:i" }}
       </div>
+    </div>
+    <form method="POST">
+      {% csrf_token %}
+      <!-- Добавьте другие поля формы, если необходимо -->
+      <input type="submit" class="btn btn-primary" name="download_pdf" value="Скачать в PDF">
+    </form>
 {% endblock %}

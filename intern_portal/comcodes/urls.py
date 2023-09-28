@@ -10,5 +10,5 @@ urlpatterns = [
     path('typecode_list/', views.typecode_list, name='typecode_list'),
     path('proposal_list/', views.proposal_list, name='proposal_list'),
     path('proposal_list/<int:proposal_id>/', views.proposal_detail, name='proposal_detail'),
-    path('delete-variant/<int:pk>/', views.delete_variant, name='delete_variant'),
+    path('generatepdf', views.generate_pdf, name='generate_pdf'),
 ]

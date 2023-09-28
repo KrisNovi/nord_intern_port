@@ -1,63 +1,68 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-    <div class="container py-5">
-        <h1>{% block name %}Новое коммерческое предложение{% endblock%}</h1>
-        <form method="POST">
-          {% csrf_token %}
-          {{ form.as_p}}
-          
-            <table class="table form-table table-bordered table-sm">
-                    <thead class="text-center">
-                    <tr>
-                        <th>Типовой код</th>
-                        <th>Количество</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for form_data in formset %}
-                        <tr class="item">
-                            <td>
-                                {{ form_data.typecodes }}
-                            </td>
-                            <td>
-                                {{ form_data.qty }}
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-danger btn-sm remove-form-row"
-                                        id="{{ formset.prefix }}">
-                                
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    <tr>
-                        <td colspan="9"
-                            style="border-left: none!important; border-right: none !important; border-bottom: none!important;">
-                            <button type="button" class="btn btn-sm btn-success add-form-row"
-                                    id="{{ formset.prefix }}">
-                                Add
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-            </table>
-            {{ formset.management_form }}
-      
-          <button type="submit">Submit</button>
-        </form>
-    </div>
 
-{% block extra_script %}
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+{% block content %}
+<div class="card mb-3">
+<h3 class="card-header" style="text-align:center;">Коммерческое предложение {{ proposal.prop_id }}</h3>
+</div>
+<br></br>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <table class="table form-table table-bordered table-sm">
+      <thead class="text-center">
+        <tr>
+          <th>Типовой код</th>
+          <th>Количество</th>
+        </tr>
+      </thead>
+      <tbody id="formset-body">
+        {{ formset.management_form }}
+        {% for form_data in formset %}
+          <tr>
+            <td>
+              {{ form_data.typecodes }}
+            </td>
+            <td>
+              {{ form_data.qty }}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="#" id="add-variant-button" class="btn btn-secondary">Добавить код</a>
+
+    <button type="submit" class="btn btn-primary">Создать</button>
+  </form>
+
+  <script id="typecodes-template" type="text/template">
+    <tr>
+      <td>
+        {{ formset.empty_form.typecodes }}
+      </td>
+      <td>
+        {{ formset.empty_form.qty }}
+      </td>
+    </tr>
+  </script>
+
+  {% block extra_script_bottom %}
+    {% comment %} <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('form .item select').select2();
+
+        $('#add-variant-button').click(function(ev) {
+            ev.preventDefault();
+            var count = $('#formset-body tr').children().length;
+            var tmplMarkup = $('#typecodes-template').html();
+            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+            $('#formset-body').append(compiledTmpl);
+    
+            // update form count
+            $('#id_typecodes-TOTAL_FORMS').attr('value', count+1);
         });
     </script>
-    <script type="text/javascript" src="{% static 'js/formset.js' %}"></script>
-
-{% endblock %}
+  {% endblock %}
 {% endblock %}
